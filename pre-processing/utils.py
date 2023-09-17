@@ -27,42 +27,47 @@ def pretty_blur_map(blur_map: numpy.array, sigma: int = 5, min_abs: float = 0.5)
 
 
 def video_to_frames(video_path):
-    folder_name = "images"
-    if not os.path.exists(folder_name):
-        os.makedirs(folder_name)
-        print(f"Folder '{folder_name}' created successfully.")
-    else:
-        print(f"Folder '{folder_name}' already exists.")
-        return 0
+  folder_names = ["images", "blurry"]
+  if not os.path.exists(folder_names[0]):
+    os.makedirs(folder_names[0])
+    print(f"Folder '{folder_names[0]}' created successfully.")
+  else:
+    print(f"Folder '{folder_names[0]}' already exists.")
+    return 0
 
-    # Generate frames
-    frames = []
-    cap = cv2.VideoCapture(video_path)
-    if cap.isOpened():
-        current_frame = 0
-        while True:
-            ret, frame = cap.read()
-            if ret:
+  os.makedirs(folder_names[1])
+
+  # Generate frames and moves blurry ones to another folder.
+  frames = []
+  cap = cv2.VideoCapture(video_path)
+  if cap.isOpened():
+      current_frame = 0
+      while True:
+          ret, frame = cap.read()
+          if ret:
+              name = f'/frame{current_frame}.jpg'
+              cv2.imwrite(name, frame)
+              if is_blurry(cv2.imread(str(name))) == False:
+                os.remove(name)
                 name = f'/images/frame{current_frame}.jpg'
                 # print(f"Creating file... {name}")
                 cv2.imwrite(name, frame)
                 frames.append(name)
-            current_frame += 1
-            if (current_frame == 268):
-                return frames
-        cap.release()
-    cv2.destroyAllWindows()
-    return frames
+              else:
+                os.remove(name)
+                name = f'/blurry/frame{current_frame}.jpg'
+                cv2.imwrite(name, frame)
+          current_frame += 1
+          if (current_frame == 268):
+            return frames
+      cap.release()
+  cv2.destroyAllWindows()
+  return frames
 
 
-def remove_blurry(frames):
-    for i in range(len(frames)):
-        frame = cv2.imread(str(frames[i]))
-        if estimate_blur(frame)[2] == True:
-            # frames.remove(i)
-            if os.path.isfile(frame[i]):
-                os.remove(frames[i])
-    return frames
+def is_blurry(frame):
+    print(estimate_blur(frame, threshold=10)[1])
+    return estimate_blur(frame, threshold=10)[2]
 
 # Tests
 def blurry_eval_test():
@@ -76,6 +81,3 @@ if __name__ == "__main__":
     frames = video_to_frames("/testing/test_video.mp4")
     print(str(len(frames)) + " frames created.")
     print(frames)
-
-    # After removing blurry frames.
-    remove_blurry(frames)
