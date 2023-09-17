@@ -329,4 +329,6 @@ if __name__ == "__main__":
     frames = video_to_frames("/testing/test_video.mp4")
     print(str(len(frames)) + " frames created.")
     print(frames)
+
+    # This needs work, not quite sure where the first input is in repo.
     transformers_json("colmap_text", "/images", "/pre-processing", "/pre-processing/transformers.json")
