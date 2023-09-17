@@ -1,1 +1,32 @@
-:)
+## Inspiration
+The inspiration for our revolutionary software sprang from the desire to elevate the way we share our lives and experiences on social media. In a world increasingly connected through pictures and videos, we envisioned taking storytelling a notch higher — by introducing **Immersive Stories**. We sought to transform 3D rendering into an engaging medium where you can literally walk people through your experiences, not just show them. **Imagine not just viewing a friend's vacation photo but stepping into their reality, exploring the picturesque environments as if you were there.** It's about bringing depth, dimension, and a dynamic perspective to social sharing, ushering in a new era of interactive and immersive storytelling where distances diminish, and experiences become more vibrant, vivid, and real. It's not just sharing; it's inviting friends into your world, offering a walkthrough of your moments, **redefining connection and interaction in the digital age**.
+
+## What it does
+Our software brings your videos to life, converting them into navigable 3D spaces. **Start by recording a video of any environment or object**, then use the software to **transform that footage into a digital 3D realm**, ready to explore in-depth. This tool unlocks a new layer of interaction, letting users virtually step into the spaces and moments captured, offering a richer, more immersive way to share and experience content. **It's more than viewing**; it's about experiencing, walking around, and feeling closer to the real thing, all from the user's perspective.
+
+## How we built it
+Building this innovative software initiated with the meticulous crafting of our **user interface in Unity**, a robust platform known for its expansive functionalities and user-friendly features. The backbone of the process is the seamless integration of users' **Immersive Stories** into the platform; they simply upload their videos, which are subsequently **dissected into individual frames**.
+
+Next, we instituted a **Python script that effectively scrutinizes each frame, identifying and eliminating all blurry images** to ensure only the crispest, clearest frames are utilized. This filtering is a crucial step, paving the way for the high-definition 3D renderings that come next.
+
+The selected frames then move to the next pivotal stage, being **processed by NeRF (Neural Radiance Fields)** which, with the assistance of cutting-edge AI technology, **converts them into astonishingly realistic 3D renderings**. It is a transformative phase where two-dimensional images metamorphose into three-dimensional spaces endowed with depth, texture, and nuance.
+
+Once the NeRF has worked its magic, the 3D rendering is prepared for user interaction; it is **first exported as a .ply file before being converted to a .obj file**, enabling it to be finely presented back in the Unity interface.
+
+The final product is a user’s **Immersive Story**, ready to be **navigated with intuitive ease using the WASD or arrow keys**, offering users not just a viewing experience, but a vibrant, lifelike journey through their captured moments. Every detail has been conceived with the user’s immersive experience at the forefront, culminating in a tool that transcends traditional storytelling.
+
+## Challenges we ran into
+In the developmental stages, we encountered **significant challenges while trying to run NVIDIA NGP**, especially during the construction of our own NeRF. The main hindrance came in the form of missing dependencies, a hurdle that not only slowed our progress but required meticulous troubleshooting to identify and rectify the absent elements. **This necessitated a deeper dive into the intricate web of dependencies, enhancing our understanding and facilitating a more robust build**. Despite these setbacks, our team kept pushing, applying tenacity and expertise to navigate through the complexities and keep the project advancing forward.
+
+## Accomplishments that we're proud of
+We are incredibly proud of the strides we have made in making NeRF technology **accessible and user-friendly through our native platform**. By automating the traditionally laborious process of using NeRF, we have managed to remove the barriers to entry, **allowing a wider audience to create their own Immersive Stories without the hassle**. This innovation not only brings a fresh, dynamic way to share experiences but is a milestone in fostering inclusivity in the digital storytelling landscape. It's a step toward a world where detailed, rich, and immersive narratives are not a privilege but a norm, accessible and easily crafted by all.
+
+## What we learned
+One of the essential skills acquired was **mastering Unity**, a multifaceted platform where we **not only built a visually pleasing and intuitive interface but also integrated custom API calls,** enhancing the functionality and user experience remarkably.
+
+Another cornerstone in our developmental journey was **constructing our own NeRF system**, meticulously **tying it into our API calls to automate intricate processes** that historically demanded a significant time investment. This deep integration paved the way for a more streamlined and efficient workflow, which stands as a testament to our team's ingenuity and technical prowess.
+
+To further refine the output and boost efficiency, **we took it upon ourselves to develop an additional machine learning model, dedicated to identifying and removing blurry images from the video input**. This forward-thinking addition facilitated **faster and cleaner convergence of NeRF**, thereby not only speeding up the processing time but also remarkably improving the quality of the 3D renderings. It was a journey of constant learning, bringing together a tapestry of technologies to craft a tool that stands at the frontier of immersive digital storytelling.
+
+## What's next for Immersify
+As Immersify continues to evolve, **the next milestone is venturing into the mobile sphere to redefine how stories are shared and experienced** on popular platforms like Instagram and Snapchat. While currently housed exclusively within Unity, the plan is to transition into a mobile-friendly format, potentially laying the groundwork for its own revolutionary social media platform. Whether integrating with existing giants or pioneering its own space, **Immersify is poised to bring 3D immersive stories to the fingertips of users globally**, offering a richer, more interactive storytelling canvas that mirrors the dynamic nature of real-life experiences.
